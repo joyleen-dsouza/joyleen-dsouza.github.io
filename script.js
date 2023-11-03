@@ -29,7 +29,7 @@ const poems = [
 		],
 		imgSrc: 'images/abandoned.jpg',
 		imgAltText: 'dog image',
-		date: 'May, 2020',
+		date: '2020-05',
 	},
 	{
 		title: 'Deceiving Flower',
@@ -56,7 +56,7 @@ const poems = [
 		],
 		imgSrc: 'images/deceivingflower.jpg',
 		imgAltText: 'flower image',
-		date: 'Jul, 2019',
+		date: '2019-07',
 	},
 	{
 		title: 'Nightmare',
@@ -83,7 +83,7 @@ const poems = [
 		],
 		imgSrc: 'images/nightmare.jpg',
 		imgAltText: 'moon image',
-		date: 'Jun, 2019',
+		date: '2019-06',
 	},
 	{
 		title: 'She',
@@ -102,7 +102,7 @@ const poems = [
 		],
 		imgSrc: 'images/she.jpg',
 		imgAltText: 'picture of a girl',
-		date: 'Feb, 2021',
+		date: '2021-02',
 	},
 	{
 		title: 'What if I say',
@@ -133,7 +133,7 @@ const poems = [
 		],
 		imgSrc: 'images/whatif.jpg',
 		imgAltText: 'broken glass',
-		date: 'Apr, 2020',
+		date: '2020-04',
 	},
 	{
 		title: 'Friend',
@@ -167,7 +167,7 @@ const poems = [
 		],
 		imgSrc: 'images/friend.jpg',
 		imgAltText: 'handshake',
-		date: 'May, 2023',
+		date: '2023-05',
 	},
 ];
 
@@ -192,7 +192,7 @@ function createPoemDomForModal(poem) {
 			<p>line 2</p>
 			<p>line 3</p>
 		</div>
-		<span class="date">23rd Sep, 2023</span>
+		<span class="date">Sep, 2023</span>
 	</div>
 	*/
 
@@ -220,7 +220,12 @@ function createPoemDomForModal(poem) {
 	// date
 	const date = document.createElement('span');
 	date.classList.add('date');
-	date.textContent = poem.date;
+	date.textContent = new Date(poem.date)
+		.toLocaleString('en-US', {
+			month: 'short',
+			year: 'numeric',
+		})
+		.replace(' ', ', ');
 
 	// append title, poem content and date
 	const poemDiv = document.createElement('div');
@@ -301,8 +306,8 @@ function sortItems(arr, filterBy, sortBy) {
 		else return arr.sort((a, b) => b.title.localeCompare(a.title));
 	} else {
 		if (sortBy === 'asc')
-			return arr.sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
-		else return arr.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+			return arr.sort((a, b) => new Date(a.date) - new Date(b.date));
+		else return arr.sort((a, b) => new Date(b.date) - new Date(a.date));
 	}
 }
 
