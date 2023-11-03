@@ -56,6 +56,9 @@
 	justify-content: flex-start;
 }
 
+.header {
+	margin-bottom: 30px;
+}
 .header h1 {
 	margin-bottom: 25px;
 	font-size: var(--fs-24);
@@ -107,6 +110,33 @@
 	color: #f3f3f3;
 	text-decoration: none;
 	cursor: pointer;
+}
+
+.filter-sort {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 100px;
+}
+.sort-by,
+.filter-by {
+	padding: 4px 8px;
+	margin: 0 5px;
+	cursor: pointer;
+}
+.filter-by {
+	border-radius: 3px;
+	font-size: var(--subtitle-and-item-name);
+	font-weight: var(--fw-300);
+	border: 1px solid #757474;
+}
+.sort-by {
+	font-size: calc(var(--subtitle-and-item-name) + 1px);
+	font-weight: var(--fw-300);
+	opacity: 0.8;
+}
+.sort-by:hover {
+	opacity: 1;
 }
 
 .poem h3 {

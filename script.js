@@ -266,16 +266,52 @@ function createPoemItemDom(poem) {
 	const poemItem = document.createElement('div');
 	poemItem.classList.add('item');
 
+	// attach poem, title and date fields, helps in sorting
+	poemItem.poem = poem;
+	poemItem.title = poem.title;
+	poemItem.date = poem.date;
+
 	poemItem.appendChild(title);
 	poemItem.appendChild(div);
 
 	return poemItem;
 }
 
+function toggleSortBtn() {
+	if (sortBy.dataset.sort === 'asc') {
+		sortBy.dataset.sort = 'desc';
+		sortBy.textContent = '⬆';
+	} else {
+		sortBy.dataset.sort = 'asc';
+		sortBy.textContent = '⬇';
+	}
+}
+
+function reorderItems(filterBy, sortBy) {
+	let divs = [...poemList.querySelectorAll('.item')];
+	divs.forEach(div => div.remove());
+	divs = sortItems(divs, filterBy, sortBy);
+	divs.forEach(div => poemList.append(div));
+}
+
+function sortItems(arr, filterBy, sortBy) {
+	if (filterBy === 'a-z') {
+		if (sortBy === 'asc')
+			return arr.sort((a, b) => a.title.localeCompare(b.title));
+		else return arr.sort((a, b) => b.title.localeCompare(a.title));
+	} else {
+		if (sortBy === 'asc')
+			return arr.sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
+		else return arr.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+	}
+}
+
 const modal = document.querySelector('.modal');
 const modalContent = document.querySelector('.modal-content');
 const closeModal = document.querySelector('.modal-close span');
 const poemList = document.querySelector('.poem-list');
+const filterBy = document.querySelector('.filter-by');
+const sortBy = document.querySelector('.sort-by');
 
 // modal action
 closeModal.addEventListener('click', hideModal);
@@ -283,16 +319,24 @@ window.addEventListener('click', function (event) {
 	if (event.target === modal) hideModal();
 });
 
-// render poem item on home page and add event listeners
-poems.forEach(p => {
-	// create poem item to render on home page
-	const poemItem = createPoemItemDom(p);
-
-	// add click event listener to show poem on modal on click
-	poemItem.addEventListener('click', () =>
-		showModal(createPoemDomForModal(p))
-	);
-
-	// append poem item to poem list
-	poemList.appendChild(poemItem);
+// event listeners for reordering items
+filterBy.addEventListener('change', () =>
+	reorderItems(filterBy.value, sortBy.dataset.sort)
+);
+sortBy.addEventListener('click', () => {
+	toggleSortBtn();
+	reorderItems(filterBy.value, sortBy.dataset.sort);
 });
+
+// adding event delegation listeners to display modal for poems
+poemList.addEventListener('click', function (e) {
+	if (e.target.classList.contains('poem-list')) return;
+
+	const target = e.target.closest('.item');
+	showModal(createPoemDomForModal(target.poem));
+});
+
+// render items on page load
+sortItems(poems, 'a-z', 'asc').forEach(p =>
+	poemList.appendChild(createPoemItemDom(p))
+);
