@@ -98,7 +98,7 @@
 .modal-close span {
 	font-size: calc(var(--poem-fs) - 3px);
 	font-weight: var(--fw-300);
-	color: #4c4b4b;
+	color: #bdbdbd;
 	padding: 20px;
 	float: left;
 }
