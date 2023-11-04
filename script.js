@@ -91,7 +91,7 @@ const poems = [
 			'All she needs is',
 			'Not power, not authority, not sympathy.',
 			'A life that isnt controlled by the thoughts of the society.',
-			'A life that doesnt objectify her.',
+			'A life that doesnt objectify us.',
 			'A life that isnt suppressed for the honour of the family.',
 			'A life that isnt considered a burden for anyone.',
 			'A life that isnt mocked continuously.',
@@ -195,6 +195,9 @@ function createPoemDomForModal(poem) {
 		<span class="date">Sep, 2023</span>
 	</div>
 	*/
+
+	const revealTitle = document.querySelector('.reveal-title');
+	revealTitle.textContent = poem.title;
 
 	// title
 	const title = document.createElement('div');
@@ -311,6 +314,19 @@ function sortItems(arr, filterBy, sortBy) {
 	}
 }
 
+function revealTitleOnScroll() {
+	const revealTitle = modal.querySelector('.reveal-title');
+	const title = modal.querySelector('.title');
+
+	if (title.getBoundingClientRect().bottom < 80) {
+		// title.classList.add('hidden');
+		revealTitle.classList.add('active');
+	} else {
+		// title.classList.remove('hidden');
+		revealTitle.classList.remove('active');
+	}
+}
+
 const modal = document.querySelector('.modal');
 const modalContent = document.querySelector('.modal-content');
 const closeModal = document.querySelector('.modal-close span');
@@ -323,6 +339,7 @@ closeModal.addEventListener('click', hideModal);
 window.addEventListener('click', function (event) {
 	if (event.target === modal) hideModal();
 });
+modal.addEventListener('scroll', revealTitleOnScroll);
 
 // event listeners for reordering items
 filterBy.addEventListener('change', () =>

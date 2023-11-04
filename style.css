@@ -90,20 +90,37 @@
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	margin: auto;
-	padding: 100px 35px;
+	/* margin: auto; */
+	padding: 90px 35px;
 }
 .modal-close {
 	position: fixed;
 	z-index: 1;
 	width: 100vw;
+	height: 80px;
 }
 .modal-close span {
 	font-size: calc(var(--poem-fs) - 3px);
 	font-weight: var(--fw-300);
 	color: #bdbdbd;
 	padding: 20px;
-	float: left;
+	position: absolute;
+	left: 0;
+}
+.modal-close .reveal-title {
+	font-size: var(--fs-20);
+	font-weight: var(--fw-500);
+	position: relative;
+	width: fit-content;
+	top: 20px;
+	margin: 0 auto;
+	transform: translateY(40px);
+	opacity: 0;
+	transition: 1s all ease;
+}
+.modal-close .reveal-title.active {
+	transform: translateY(0);
+	opacity: 1;
 }
 .modal-close span:hover,
 .modal-close span:focus {
