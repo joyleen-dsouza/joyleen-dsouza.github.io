@@ -169,6 +169,20 @@ const poems = [
 		imgAltText: 'handshake',
 		date: '2023-05',
 	},
+{
+		title: 'Fate',
+		lines: [
+			'Questions is what remains',
+			'With no answers at all',
+			'Fate having its own way',
+			'Demanding to surrender it all',
+			'Reminding that mere humans',
+			'Have no powers at all',
+		],
+		imgSrc: 'images/fate.jpg',
+		imgAltText: 'question mark',
+		date: '2020-06',
+	},
 ];
 
 function hideModal() {
