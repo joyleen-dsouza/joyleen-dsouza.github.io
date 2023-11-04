@@ -91,7 +91,7 @@ const poems = [
 			'All she needs is',
 			'Not power, not authority, not sympathy.',
 			'A life that isnt controlled by the thoughts of the society.',
-			'A life that doesnt objectify us.',
+			'A life that doesnt objectify her.',
 			'A life that isnt suppressed for the honour of the family.',
 			'A life that isnt considered a burden for anyone.',
 			'A life that isnt mocked continuously.',
