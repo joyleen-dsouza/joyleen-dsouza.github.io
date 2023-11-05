@@ -93,6 +93,10 @@
 	padding: 90px 35px 35px 35px;
 	height: fit-content;
 	min-height: 85vh;
+	min-height: -moz-available;
+	min-height: -webkit-fill-available;
+	min-height: fill-available;
+	min-height: 85svh;
 }
 .modal-close {
 	position: fixed;
