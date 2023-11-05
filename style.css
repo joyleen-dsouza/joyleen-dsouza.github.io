@@ -90,8 +90,9 @@
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	/* margin: auto; */
-	padding: 90px 35px;
+	padding: 90px 35px 35px 35px;
+	height: fit-content;
+	min-height: 85vh;
 }
 .modal-close {
 	position: fixed;
