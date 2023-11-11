@@ -183,6 +183,33 @@ const poems = [
 		imgAltText: 'question mark',
 		date: '2020-06',
 	},
+ {
+  title : 'Yearn',
+  lines : [
+   'The stars, the coffee, the chorus',
+   'Why is nothing the same',
+   'Is it within us or between us',
+   'That something has changed',
+   ''
+   'The one I search in your eyes is lost',
+   'The one in the mirror is now unfound',
+   'Someone who meant the world to me',
+   'Now just breathes on this earth guilt free',
+   ''
+   'People change with time they say',
+   'Come in your life to just walk away',
+   'The good morning that started my day',
+   'Is now said in a formal way',
+   ''
+   'We cross paths with awkward smiles',
+   'Once promised to walk together miles',
+   'All I have with memories bittersweet',
+   'Is a desire we never meet',
+ ],
+ imgSrc: 'images/yearn.jpg',
+	imgAltText: 'yearn',
+	date: '2023-11',
+}
 ];
 
 /**
