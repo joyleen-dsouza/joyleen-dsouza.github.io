@@ -29,9 +29,9 @@
 	--fs-27: 27px;
 
 	--poem-fs: 16px;
-	--subtitle-and-item-name: 12px;
-	--item-width: 120px;
-	--item-height: 80px;
+	--subtitle-and-tile-name: 12px;
+	--tile-width: 120px;
+	--tile-height: 80px;
 
 	--bg: #18181b;
 	--color: #c2c2c2;
@@ -65,7 +65,7 @@
 	font-weight: var(--fw-500);
 }
 .header p {
-	font-size: var(--subtitle-and-item-name);
+	font-size: var(--subtitle-and-tile-name);
 	font-weight: var(--fw-400);
 	font-style: italic;
 	margin-bottom: 10px;
@@ -156,12 +156,12 @@
 }
 .filter-by {
 	border-radius: 3px;
-	font-size: var(--subtitle-and-item-name);
+	font-size: var(--subtitle-and-tile-name);
 	font-weight: var(--fw-400);
 	border: 1px solid #757474;
 }
 .sort-by {
-	font-size: calc(var(--subtitle-and-item-name) + 1px);
+	font-size: calc(var(--subtitle-and-tile-name) + 1px);
 	font-weight: var(--fw-400);
 	opacity: 0.8;
 }
@@ -196,9 +196,9 @@
 	margin: 30px 0;
 }
 
-.item {
-	width: var(--item-width);
-	height: var(--item-height);
+.tile {
+	width: var(--tile-width);
+	height: var(--tile-height);
 	margin: 15px;
 	display: flex;
 	justify-content: center;
@@ -206,31 +206,31 @@
 	position: relative;
 	transition: all 0.3s ease-in-out;
 }
-.item span {
-	font-size: var(--subtitle-and-item-name);
+.tile span {
+	font-size: var(--subtitle-and-tile-name);
 	font-weight: var(--fw-300);
 	position: absolute;
-	top: calc(var(--item-height) - 10px);
+	top: calc(var(--tile-height) - 10px);
 	background: none;
 }
-.item .item-img-div {
-	width: calc(var(--item-width) - 20px);
-	height: calc(var(--item-height) - 20px);
+.tile .tile-img-div {
+	width: calc(var(--tile-width) - 20px);
+	height: calc(var(--tile-height) - 20px);
 	border-radius: 3px;
 	overflow: hidden;
 	box-shadow: 2px 2px 5px rgb(210, 210, 210);
 }
-.item .item-img {
-	width: calc(var(--item-width) - 20px);
-	height: calc(var(--item-height) - 20px);
+.tile .tile-img {
+	width: calc(var(--tile-width) - 20px);
+	height: calc(var(--tile-height) - 20px);
 	border-radius: 3px;
 	object-fit: cover;
 	transition: all 0.3s ease-in-out;
 }
-.item:hover .item-img {
+.tile:hover .tile-img {
 	transform: scale(1.4);
 }
-.item:hover .item-img-div {
+.tile:hover .tile-img-div {
 	box-shadow: 2px 2px 5px rgba(210, 210, 210, 0.25);
 }
 
@@ -246,9 +246,9 @@
 @media screen and (min-width: 580px) {
 	:root {
 		--poem-fs: 18px;
-		--subtitle-and-item-name: 14px;
-		--item-width: 150px;
-		--item-height: 100px;
+		--subtitle-and-tile-name: 14px;
+		--tile-width: 150px;
+		--tile-height: 100px;
 	}
 	.main {
 		margin: 50px;
@@ -281,9 +281,9 @@
 @media screen and (min-width: 768px) {
 	:root {
 		--poem-fs: 19px;
-		--subtitle-and-item-name: 15px;
-		--item-width: 200px;
-		--item-height: 133px;
+		--subtitle-and-tile-name: 15px;
+		--tile-width: 200px;
+		--tile-height: 133px;
 	}
 	.main {
 		margin: 50px 80px;
@@ -297,7 +297,7 @@
 		margin-left: 80px;
 	}
 
-	.item {
+	.tile {
 		margin: 20px;
 	}
 
@@ -316,9 +316,9 @@
 @media screen and (min-width: 1024px) {
 	:root {
 		--poem-fs: 20px;
-		--subtitle-and-item-name: 16px;
-		--item-width: 220px;
-		--item-height: 146px;
+		--subtitle-and-tile-name: 16px;
+		--tile-width: 220px;
+		--tile-height: 146px;
 	}
 	.main {
 		margin: 50px 120px;
@@ -332,7 +332,7 @@
 		margin-left: 120px;
 	}
 
-	.item {
+	.tile {
 		margin: 22px;
 	}
 

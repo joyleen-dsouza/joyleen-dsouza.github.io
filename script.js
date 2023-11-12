@@ -216,10 +216,10 @@ const poems = [
  * Clears the modal content and hide it
  */
 function hideModal() {
-	modalContent.innerHTML = '';
-
 	modal.classList.remove('visuallyshow');
 	setTimeout(() => modal.classList.remove('show'), 700);
+
+	modalContent.innerHTML = '';
 }
 
 /**
@@ -305,14 +305,14 @@ function createPoemDomForModal(poem) {
  * @param {Object} poem Poem from poems array
  * @returns HTMLElement for tile to display on the home page
  */
-function createPoemItemDom(poem) {
+function createPoemTileDom(poem) {
 	/* Creates this HTML element 
 	
-	<div class="item">
+	<div class="tile">
 		<span>Friend</span>
-		<div class="item-img-div">
+		<div class="tile-img-div">
 			<img
-				class="item-img"
+				class="tile-img"
 				src="images/friend.jpg"
 				alt="handshake"
 			/>
@@ -324,30 +324,30 @@ function createPoemItemDom(poem) {
 	const title = document.createElement('span');
 	title.textContent = poem.title;
 
-	// item image
+	// tile image
 	const img = document.createElement('img');
-	img.classList.add('item-img');
+	img.classList.add('tile-img');
 	img.setAttribute('src', poem.imgSrc);
 	img.setAttribute('alt', poem.imgAltText);
 
-	// item image container
+	// tile image container
 	const div = document.createElement('div');
-	div.classList.add('item-img-div');
+	div.classList.add('tile-img-div');
 	div.appendChild(img);
 
 	// append everything
-	const poemItem = document.createElement('div');
-	poemItem.classList.add('item');
+	const poemTile = document.createElement('div');
+	poemTile.classList.add('tile');
 
 	// attach poem, title and date fields, helps in sorting
-	poemItem.poem = poem;
-	poemItem.title = poem.title;
-	poemItem.date = poem.date;
+	poemTile.poem = poem;
+	poemTile.title = poem.title;
+	poemTile.date = poem.date;
 
-	poemItem.appendChild(title);
-	poemItem.appendChild(div);
+	poemTile.appendChild(title);
+	poemTile.appendChild(div);
 
-	return poemItem;
+	return poemTile;
 }
 
 /**
@@ -364,12 +364,12 @@ function toggleSortBtn() {
 }
 
 /**
- * Reorders items on the home page
+ * Reorders tiles on the home page
  * @param {String} filterBy Filter by - date/a-z
  * @param {String} sortBy Sort - asc/desc
  */
 function reorderItems(filterBy, sortBy) {
-	let divs = [...poemList.querySelectorAll('.item')];
+	let divs = [...poemList.querySelectorAll('.tile')];
 	divs.forEach(div => div.remove());
 	divs = sortItems(divs, filterBy, sortBy);
 	divs.forEach(div => poemList.append(div));
@@ -399,6 +399,7 @@ function sortItems(arr, filterBy, sortBy) {
  */
 function revealTitleOnScroll() {
 	const title = modal.querySelector('.title');
+	if (!title) return;
 
 	if (title.getBoundingClientRect().bottom < 80)
 		revealTitle.classList.add('active');
@@ -424,7 +425,7 @@ window.addEventListener('click', e => {
 // transition the title to top on scroll
 modal.addEventListener('scroll', revealTitleOnScroll);
 
-// event listeners for reordering items
+// event listeners for reordering tiles
 filterBy.addEventListener('change', () =>
 	reorderItems(filterBy.value, sortBy.dataset.sort)
 );
@@ -437,14 +438,14 @@ sortBy.addEventListener('click', () => {
 poemList.addEventListener('click', e => {
 	if (e.target.classList.contains('poem-list')) return;
 
-	const target = e.target.closest('.item');
+	const target = e.target.closest('.tile');
 	showModal(createPoemDomForModal(target.poem));
 
 	// do not preserve the scrolled state, scroll back to top on modal display
 	modal.scrollTo(0, 0);
 });
 
-// render items on page load, default filter: a-z, sort: asc
+// render tiles on page load, default filter: a-z, sort: asc
 sortItems(poems, 'a-z', 'asc').forEach(p =>
-	poemList.appendChild(createPoemItemDom(p))
+	poemList.appendChild(createPoemTileDom(p))
 );
