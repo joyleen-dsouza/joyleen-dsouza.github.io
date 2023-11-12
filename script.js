@@ -217,7 +217,9 @@ const poems = [
  */
 function hideModal() {
 	modalContent.innerHTML = '';
-	modal.style.display = 'none';
+
+	modal.classList.remove('visuallyshow');
+	setTimeout(() => modal.classList.remove('show'), 700);
 }
 
 /**
@@ -226,7 +228,9 @@ function hideModal() {
  */
 function showModal(dom) {
 	modalContent.appendChild(dom);
-	modal.style.display = 'block';
+
+	modal.classList.add('show');
+	setTimeout(() => modal.classList.add('visuallyshow'), 1);
 }
 
 /**
