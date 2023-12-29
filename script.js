@@ -210,6 +210,28 @@ const poems = [
 		imgAltText: 'yearn',
 		date: '2023-11',
 	},
+{
+		title: 'Feliz Navidad',
+		lines: [
+			"It's Christmas mate",
+			'No place for hate',
+			'Lying in the manger, humble and meek',
+			"Declaring kindness doesn't mean you're weak.",
+   '',
+			'Came for me, came for you',
+			'Showering love that is pure and true',
+			"O child, give and don't expect",
+			'Is the message of this Advent.',
+   '',
+			"Love self and give love to all",
+			'Bitterness just deprives peace afterall',
+			'To forgive and redeem everyone',
+			"Came to earth, God's only son!",
+		],
+		imgSrc: 'images/christmas.jpg',
+		imgAltText: 'christmas image',
+		date: '2023-12',
+	},
 ];
 
 /**
