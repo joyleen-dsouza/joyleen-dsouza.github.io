@@ -261,8 +261,8 @@ const poems = [
                         'Walking on a path unknown.',
 
                 ],
-                imgSrc: 'images/deceivingflower.jpg',
-                imgAltText: 'road image',
+                imgSrc: 'images/standonroad.jpg',
+                imgAltText: 'standing on road image',
                 date: '2024-04',
         },
 ];
