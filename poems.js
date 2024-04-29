@@ -77,7 +77,7 @@ const poems = [
 			"Wouldn't be me",
 			'',
 			'The anxiety flew',
-			"Coz it wasn't true",
+			"Cause it wasn't true",
 			'You are mine',
 			'And me forever thine',
 		],
